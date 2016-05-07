@@ -1,0 +1,55 @@
+package Prectice;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class JavaThink {
+
+	public static void main(String[] args) {
+		try { // Scope of try catch statement starts
+			Scanner yourName = new Scanner(System.in); // input box or get the
+														// Player name
+			System.out.print("Befor we get started, give me your Name please: ");
+			String playerName = yourName.nextLine(); // Saves Player name for
+														// Bingo part
+			int yourNum = 0;// In oder to let while loop kicks off; pessimistic
+							// initializing
+			Random randomNum = new Random();
+			int number = randomNum.nextInt(100) + 1;// Random number generator
+			// System.out.println(number);
+			System.out.print("All right! Here is the deal: I got a Number in my mind between 0 to 100."
+					+ "\n Let's see if you can guess it right!" + "\n Please Enter the number here -->");
+
+			while (number != yourNum) { // Scope of While loop statement Starts
+
+				Scanner inputbox = new Scanner(System.in); // input box for
+															// player's number
+				yourNum = inputbox.nextInt();// saves player's number
+
+				if (number == yourNum) {
+					System.out.println(" Bingooo!!!! GOOD JOB " + playerName);// if
+																				// the
+																				// player
+																				// found
+																				// it
+				} else if (number > yourNum) {
+					System.out.println("Oops! your number is " + (number - yourNum) + " less than mine!");
+					System.out.print("You can do it! keep guessing!\n Number goes here-->");
+				} else if (number < yourNum) {
+					System.out.println("Oops! your number is " + (yourNum - number) + " more than mine!");
+					System.out.print("You can do it! keep guessing!\n Number goes here-->");
+				}
+
+			} // Scope of While loop statement ends
+		} catch (java.util.InputMismatchException e) { // This is try catch for
+														// if player puts value
+														// other than
+														// Number(integer)
+			System.out.println("Java Error Exception type is : " + e);
+			System.out.println("GAME ERORR: " + "You might used invalid value. "
+					+ "Please make sure your value is numaric " + "and whole number.");
+		} // Scope of try catch statement ends
+
+	}
+
+}
